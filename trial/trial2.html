@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<label>I am here</label>
+<label for="fileContents"></label>
+<textarea name="fileContents" id="fileContents" cols="45" rows="5"></textarea>
+<script language="javascript">
+
+//Reading file
+window.onload = function(event)
+{
+	console.log("I am here");
+var reader = new FileReader();
+    reader.readAsText("./trialData.json", "JSON");
+    reader.onload = function (evt) {
+        console.log(evt.target.result);
+		document.getElementById("fileContents").innerHTML = evt.target.result;
+    }	
+
+    reader.onerror = function (evt) {
+        document.getElementById("fileContents").innerHTML = "error reading file";
+    }
+	}
+
+
+
+//Parsing the json
+//myData = JSON.parse(text, function (key, value) {
+  //  var type;
+    //if (value && typeof value === 'object') {
+ //       type = value.type;
+//        if (typeof type === 'string' && typeof window[type] === 'function') {
+ //           return new (window[type])(value);
+   //     }
+//    }
+  //  return value;
+//});
+
+
+</script>
+</body>
+</html>
